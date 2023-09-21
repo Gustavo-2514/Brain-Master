@@ -1,0 +1,71 @@
+/*!************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/index.scss ***!
+  \************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,900;1,500;1,600;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/index.scss (1) ***!
+  \****************************************************************************************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f0c29;
+  font-family: Poppins;
+}
+
+.containerMain {
+  width: 800px;
+  height: auto;
+  padding: 0;
+  color: white;
+  background-color: #24243e;
+}
+.containerMain .headerContainerMain {
+  background: #702cf4;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+}
+.containerMain .headerContainerMain .progress {
+  width: 150px;
+}
+.containerMain .containerQuestions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #24243e;
+  padding: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.containerMain .containerQuestions .response {
+  background: #0f0c29;
+  width: 450px;
+  margin: 0.25rem;
+  padding: 20px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: 0.8s;
+}
+.containerMain .containerQuestions .response:hover {
+  transform: scale(1.1);
+  transition: 0.8s;
+}
+.containerMain .alert {
+  width: 450px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.containerMain .footerContainerMain {
+  background: #702cf4;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+}
+.containerMain .footerContainerMain img {
+  margin: 2px;
+}

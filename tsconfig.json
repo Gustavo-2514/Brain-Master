@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ESNext", // Versão do JavaScript alvo
+      "module": "ESNext", // Sistema de módulos a ser usado (pode ser CommonJS, AMD, UMD, System, ES6, etc.)
+      
+      "isolatedModules": true,
+      "esModuleInterop": true, // Habilita interoperabilidade de módulos ES6/CommonJS
+
+      "moduleResolution": "node", // Método de resolução de módulos (node para Node.js)
+      "outDir": "./src/js", // Diretório de saída para arquivos transpilados
+      
+    },
+    "exclude": ["node_modules"] // Diretórios/arquivos para exclusão
+  }
+  
