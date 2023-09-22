@@ -52,10 +52,17 @@ const createResponse = (res:string)=>{
     return falseResponse
 }
 
-const createRoundOfQuestions = async ()=>{
+const createNextBtn = ()=>{
+    const btn = document.createElement('button')
+    btn.classList.add('btn','btn-outline-light','nextBtn')
+    btn.textContent = 'Proxima pergunta'
+    return btn
+}
+
+const createRoundOfQuestions = async (number:number)=>{
     await pushInQuestions()
     const divQuestions = document.querySelector('.containerQuestions')
-    let currentQuestion:Question = questionsGlobal[0]
+    let currentQuestion:Question = questionsGlobal[number]
 
     let allResponse = [currentQuestion.correct_answer,...currentQuestion.incorrect_answers]
     randomPositionOfQuestions(allResponse)
@@ -70,13 +77,30 @@ const createRoundOfQuestions = async ()=>{
     console.log(questionsGlobal[0].correct_answer)
 }
 
-await createRoundOfQuestions()
+await createRoundOfQuestions(0)
 
 
 const currentResponse = (ev)=>{
-    console.log(ev.target.textContent)
-} 
+    let correct:number = 0 
 
+    const responseClick:HTMLDivElement = ev.target
+
+    if(responseClick.textContent === questionsGlobal[0].correct_answer){
+        correct++
+        responseClick.style.backgroundColor = 'green'
+        const btn = createNextBtn()
+        const divQuestions = document.querySelector('.containerQuestions')
+        divQuestions.appendChild(btn)
+        createRoundOfQuestions(1)
+
+    }
+    else{
+        responseClick.style.backgroundColor = 'red'
+        const btn = createNextBtn()
+        const divQuestions = document.querySelector('.containerQuestions')
+        divQuestions.appendChild(btn)
+    }
+} 
 
 const responses:NodeListOf<HTMLDListElement> = document.querySelectorAll('.response')
 responses.forEach(res=>{

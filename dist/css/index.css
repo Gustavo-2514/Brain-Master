@@ -55,6 +55,11 @@ body {
   transform: scale(1.1);
   transition: 0.8s;
 }
+.containerMain .containerQuestions .nextBtn {
+  margin-top: 15px;
+  width: 450px;
+  padding: 20px;
+}
 .containerMain .alert {
   width: 450px;
   margin: auto;
