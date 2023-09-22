@@ -14,6 +14,13 @@ interface Question {
 let questionsGlobal:Question[] = []
 
 
+const randomPositionOfQuestions = (array:string[])=>{
+    for(let i = array.length - 1; i > 0; i--){
+        let r = Math.floor(Math.random() * (i+1));
+        [array[i], array[r]] = [array[r],array[i]]
+    }
+}
+
 const getQuestions = async () => {
     const result = await fetch(apiUrl).then(res => res.json())
     const questions:Question[] = result.results
@@ -38,57 +45,48 @@ const createTrueResponse = (question:Question)=>{
     return trueResponse
 }
 
-const createFalseResponse = (falseRes:string)=>{
+const createResponse = (res:string)=>{
     const falseResponse = document.createElement('div')
     falseResponse.classList.add('response')
-    falseResponse.innerHTML = falseRes
+    falseResponse.innerHTML = res
     return falseResponse
 }
 
 const createRoundOfQuestions = async ()=>{
     await pushInQuestions()
-    
     const divQuestions = document.querySelector('.containerQuestions')
-    // um for aqui
+    let currentQuestion:Question = questionsGlobal[0]
 
+    let allResponse = [currentQuestion.correct_answer,...currentQuestion.incorrect_answers]
+    randomPositionOfQuestions(allResponse)
 
-
-    const titleQuestion = createTitleOfQuestion(questionsGlobal[0])
+    const titleQuestion = createTitleOfQuestion(currentQuestion)
     divQuestions.appendChild(titleQuestion)
-
-
-    let randomPosition = Math.floor(Math.random() *2)
-    
-
-    if(randomPosition === 0){
-        
-        const teste = questionsGlobal[0].incorrect_answers.forEach(falseRes=>{
-            const falseResponse = createFalseResponse(falseRes)
-            divQuestions.appendChild(falseResponse)
-        })
-
-        const trueResponse = createTrueResponse(questionsGlobal[0])
-        divQuestions.appendChild(trueResponse)
-        
-    }
-    else {
-        const trueResponse = createTrueResponse(questionsGlobal[0])
-        divQuestions.appendChild(trueResponse)
-
-        const teste = questionsGlobal[0].incorrect_answers.forEach(falseRes=>{
-            const falseResponse = createFalseResponse(falseRes)
-            divQuestions.appendChild(falseResponse)
-        })
-    }
+    allResponse.forEach(res=>{
+        const response = createResponse(res)
+        divQuestions.appendChild(response)
+    })
 
     console.log(questionsGlobal[0].correct_answer)
-    
 }
 
+await createRoundOfQuestions()
 
 
-createRoundOfQuestions()
+const currentResponse = (ev)=>{
+    console.log(ev.target.textContent)
+} 
 
 
-let test:HTMLDivElement = document.querySelector('.containerQuestions')
-test.style.backgroundImage = "url('../imgs/brainRemove.png')"
+const responses:NodeListOf<HTMLDListElement> = document.querySelectorAll('.response')
+responses.forEach(res=>{
+    res.addEventListener('click',currentResponse)
+})
+
+
+function setImages() {
+    let test: HTMLDivElement = document.querySelector('.containerQuestions')
+    test.style.backgroundImage = "url('../imgs/brainRemove.png')"
+}
+
+setImages()
