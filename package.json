@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode=development",
     "prod": "webpack --mode=production",
-    "server": "webpack-dev-server --mode=development"
+    "server": "webpack-dev-server --mode=development",
+    "script": "tsc --watch"
   },
   "keywords": [],
   "author": "",

@@ -1,111 +1,106 @@
+
 import '../scss/index.scss'
 import '../imgs/fullHeart.png'
+import { questionsGame } from './questionsGame'
 
-const apiUrl: string = 'https://opentdb.com/api.php?amount=5&category=15&difficulty=easy&type=multiple'
+const containerQuestions = document.querySelector('.containerQuestions')
 
-interface Question {
-    category: string,
-    question:string,
-    correct_answer:string,
-    difficulty: string,
-    incorrect_answers:string[],
+// const apiUrl: string = 'https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&lang=pt'
+export interface Question {
+    id: number,
+    question: string,
+    correct_answer: string,
+    incorrect_answers: string[],
 }
 
-let questionsGlobal:Question[] = []
+
+let questionsGlobal: Question[] = []
+let currentQuestionGlobal: number = 0
 
 
-const randomPositionOfQuestions = (array:string[])=>{
-    for(let i = array.length - 1; i > 0; i--){
-        let r = Math.floor(Math.random() * (i+1));
-        [array[i], array[r]] = [array[r],array[i]]
+const randomPositionsArray = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const r = Math.floor(Math.random() * (i + 1));
+        [array[i], array[r]] = [array[r], array[i]]
     }
 }
-
-const getQuestions = async () => {
-    const result = await fetch(apiUrl).then(res => res.json())
-    const questions:Question[] = result.results
-    return questions
+const createTitle = (questionTitle: string) => {
+    const quesTitle = document.createElement('h3')
+    quesTitle.classList.add('questionTitle')
+    quesTitle.innerText = questionTitle
+    return quesTitle
 }
 
-const pushInQuestions = async ()=>{
-    const questions:Question[] = await getQuestions()
-    questionsGlobal.push(...questions)
+
+const createResponse = (response: string) => {
+    const res = document.createElement('div')
+    res.classList.add('response')
+    res.innerText = response
+
+    res.addEventListener('click', clickResponse)
+    return res
 }
 
-const createTitleOfQuestion = (question:Question)=>{
-    const titleQuestion = document.createElement('h3')
-    titleQuestion.innerHTML = question.question
-    return titleQuestion
-}
+const clickResponse = (ev) => {
 
-const createTrueResponse = (question:Question)=>{
-    const trueResponse = document.createElement('div')
-    trueResponse.classList.add('response',`response1`) //alterar depois
-    trueResponse.innerHTML = question.correct_answer
-    return trueResponse
-}
+    const response = ev.target
 
-const createResponse = (res:string)=>{
-    const falseResponse = document.createElement('div')
-    falseResponse.classList.add('response')
-    falseResponse.innerHTML = res
-    return falseResponse
-}
+    if (response.innerText === questionsGame[currentQuestionGlobal].correct_answer) {
+        response.style.backgroundColor = 'green'
+        createNextBtn()
+    } else {
+        response.style.backgroundColor = 'red'
+        console.log('erro')
+        createNextBtn()
+    }
+    currentQuestionGlobal++
+    console.log(currentQuestionGlobal)
 
-const createNextBtn = ()=>{
-    const btn = document.createElement('button')
-    btn.classList.add('btn','btn-outline-light','nextBtn')
-    btn.textContent = 'Proxima pergunta'
-    return btn
-}
-
-const createRoundOfQuestions = async (number:number)=>{
-    await pushInQuestions()
-    const divQuestions = document.querySelector('.containerQuestions')
-    let currentQuestion:Question = questionsGlobal[number]
-
-    let allResponse = [currentQuestion.correct_answer,...currentQuestion.incorrect_answers]
-    randomPositionOfQuestions(allResponse)
-
-    const titleQuestion = createTitleOfQuestion(currentQuestion)
-    divQuestions.appendChild(titleQuestion)
-    allResponse.forEach(res=>{
-        const response = createResponse(res)
-        divQuestions.appendChild(response)
+    const responses = document.querySelectorAll('.response')
+    responses.forEach(res => {
+        res.removeEventListener('click', clickResponse)
     })
 
-    console.log(questionsGlobal[0].correct_answer)
+    response.removeEventListener('click', clickResponse)
 }
 
-await createRoundOfQuestions(0)
+
+const createNextBtn = () => {
+    const nextBtn = document.createElement('button')
+    nextBtn.classList.add('nextBtn', 'btn', 'btn-outline-light')
+    nextBtn.innerText = 'Proxima Pergunta'
+    containerQuestions.appendChild(nextBtn)
+
+    nextBtn.addEventListener('click', () => {
+        document.querySelector('.questionTitle').remove()
+        document.querySelectorAll('.response').forEach(res => {
+            res.remove()
+        })
+        document.querySelector('.nextBtn').remove()
+
+        createRoundOfQuestions(questionsGame[currentQuestionGlobal])
+    })
+}
 
 
-const currentResponse = (ev)=>{
-    let correct:number = 0 
 
-    const responseClick:HTMLDivElement = ev.target
+const createRoundOfQuestions = (question: Question) => {
+    console.log(currentQuestionGlobal)
 
-    if(responseClick.textContent === questionsGlobal[0].correct_answer){
-        correct++
-        responseClick.style.backgroundColor = 'green'
-        const btn = createNextBtn()
-        const divQuestions = document.querySelector('.containerQuestions')
-        divQuestions.appendChild(btn)
-        createRoundOfQuestions(1)
+    const titleResponse = createTitle(question.question)
+    containerQuestions.appendChild(titleResponse)
 
-    }
-    else{
-        responseClick.style.backgroundColor = 'red'
-        const btn = createNextBtn()
-        const divQuestions = document.querySelector('.containerQuestions')
-        divQuestions.appendChild(btn)
-    }
-} 
+    const allResponse: string[] = [question.correct_answer, ...question.incorrect_answers]
+    randomPositionsArray(allResponse)
+    allResponse.forEach(res => {
+        const response = createResponse(res)
+        containerQuestions.appendChild(response)
+    })
+}
 
-const responses:NodeListOf<HTMLDListElement> = document.querySelectorAll('.response')
-responses.forEach(res=>{
-    res.addEventListener('click',currentResponse)
-})
+
+createRoundOfQuestions(questionsGame[currentQuestionGlobal])
+
 
 
 function setImages() {

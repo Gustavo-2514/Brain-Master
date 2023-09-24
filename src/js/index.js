@@ -1,82 +1,73 @@
 import '../scss/index.scss';
 import '../imgs/fullHeart.png';
-const apiUrl = 'https://opentdb.com/api.php?amount=5&category=15&difficulty=easy&type=multiple';
+import { questionsGame } from './questionsGame';
+const containerQuestions = document.querySelector('.containerQuestions');
 let questionsGlobal = [];
-const randomPositionOfQuestions = (array) => {
+let currentQuestionGlobal = 0;
+const randomPositionsArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
-        let r = Math.floor(Math.random() * (i + 1));
+        const r = Math.floor(Math.random() * (i + 1));
         [array[i], array[r]] = [array[r], array[i]];
     }
 };
-const getQuestions = async () => {
-    const result = await fetch(apiUrl).then(res => res.json());
-    const questions = result.results;
-    return questions;
+const createTitle = (questionTitle) => {
+    const quesTitle = document.createElement('h3');
+    quesTitle.classList.add('questionTitle');
+    quesTitle.innerText = questionTitle;
+    return quesTitle;
 };
-const pushInQuestions = async () => {
-    const questions = await getQuestions();
-    questionsGlobal.push(...questions);
+const createResponse = (response) => {
+    const res = document.createElement('div');
+    res.classList.add('response');
+    res.innerText = response;
+    res.addEventListener('click', clickResponse);
+    return res;
 };
-const createTitleOfQuestion = (question) => {
-    const titleQuestion = document.createElement('h3');
-    titleQuestion.innerHTML = question.question;
-    return titleQuestion;
-};
-const createTrueResponse = (question) => {
-    const trueResponse = document.createElement('div');
-    trueResponse.classList.add('response', `response1`); //alterar depois
-    trueResponse.innerHTML = question.correct_answer;
-    return trueResponse;
-};
-const createResponse = (res) => {
-    const falseResponse = document.createElement('div');
-    falseResponse.classList.add('response');
-    falseResponse.innerHTML = res;
-    return falseResponse;
-};
-const createNextBtn = () => {
-    const btn = document.createElement('button');
-    btn.classList.add('btn', 'btn-outline-light', 'nextBtn');
-    btn.textContent = 'Proxima pergunta';
-    return btn;
-};
-const createRoundOfQuestions = async (number) => {
-    await pushInQuestions();
-    const divQuestions = document.querySelector('.containerQuestions');
-    let currentQuestion = questionsGlobal[number];
-    let allResponse = [currentQuestion.correct_answer, ...currentQuestion.incorrect_answers];
-    randomPositionOfQuestions(allResponse);
-    const titleQuestion = createTitleOfQuestion(currentQuestion);
-    divQuestions.appendChild(titleQuestion);
-    allResponse.forEach(res => {
-        const response = createResponse(res);
-        divQuestions.appendChild(response);
-    });
-    console.log(questionsGlobal[0].correct_answer);
-};
-await createRoundOfQuestions(0);
-const currentResponse = (ev) => {
-    let correct = 0;
-    const responseClick = ev.target;
-    if (responseClick.textContent === questionsGlobal[0].correct_answer) {
-        correct++;
-        responseClick.style.backgroundColor = 'green';
-        const btn = createNextBtn();
-        const divQuestions = document.querySelector('.containerQuestions');
-        divQuestions.appendChild(btn);
-        createRoundOfQuestions(1);
+const clickResponse = (ev) => {
+    const response = ev.target;
+    if (response.innerText === questionsGame[currentQuestionGlobal].correct_answer) {
+        response.style.backgroundColor = 'green';
+        createNextBtn();
     }
     else {
-        responseClick.style.backgroundColor = 'red';
-        const btn = createNextBtn();
-        const divQuestions = document.querySelector('.containerQuestions');
-        divQuestions.appendChild(btn);
+        response.style.backgroundColor = 'red';
+        console.log('erro');
+        createNextBtn();
     }
+    currentQuestionGlobal++;
+    console.log(currentQuestionGlobal);
+    const responses = document.querySelectorAll('.response');
+    responses.forEach(res => {
+        res.removeEventListener('click', clickResponse);
+    });
+    response.removeEventListener('click', clickResponse);
 };
-const responses = document.querySelectorAll('.response');
-responses.forEach(res => {
-    res.addEventListener('click', currentResponse);
-});
+const createNextBtn = () => {
+    const nextBtn = document.createElement('button');
+    nextBtn.classList.add('nextBtn', 'btn', 'btn-outline-light');
+    nextBtn.innerText = 'Proxima Pergunta';
+    containerQuestions.appendChild(nextBtn);
+    nextBtn.addEventListener('click', () => {
+        document.querySelector('.questionTitle').remove();
+        document.querySelectorAll('.response').forEach(res => {
+            res.remove();
+        });
+        document.querySelector('.nextBtn').remove();
+        createRoundOfQuestions(questionsGame[currentQuestionGlobal]);
+    });
+};
+const createRoundOfQuestions = (question) => {
+    console.log(currentQuestionGlobal);
+    const titleResponse = createTitle(question.question);
+    containerQuestions.appendChild(titleResponse);
+    const allResponse = [question.correct_answer, ...question.incorrect_answers];
+    randomPositionsArray(allResponse);
+    allResponse.forEach(res => {
+        const response = createResponse(res);
+        containerQuestions.appendChild(response);
+    });
+};
+createRoundOfQuestions(questionsGame[currentQuestionGlobal]);
 function setImages() {
     let test = document.querySelector('.containerQuestions');
     test.style.backgroundImage = "url('../imgs/brainRemove.png')";
