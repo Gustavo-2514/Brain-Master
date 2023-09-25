@@ -24,15 +24,12 @@ module.exports = {
         test: /\.(scss)$/,
         use: [
           {
-            // AddsCSS to the DOM by injecting a `<style>` tag
             loader: MiniCssExtractPlugin.loader
           },
           {
-            // Interprets `@import` and `url()` like `import/require()` and will resolve them
             loader: 'css-loader'
           },
           {
-            // Loader for webpack to process CSS with PostCSS
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
@@ -43,7 +40,6 @@ module.exports = {
             }
           },
           {
-            // Loads a SASS/SCSS file and compiles it to CSS
             loader: 'sass-loader'
           }
         ]
@@ -92,6 +88,10 @@ module.exports = {
         {
           from: "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2",
           to: "css/fonts",
+        },
+        {
+          from: "node_modules/aos/dist/aos.css",
+          to: "css",
         },
       ],
     }),

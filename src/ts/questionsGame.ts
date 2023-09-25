@@ -184,72 +184,66 @@ export const questionsGame:Question[] = [
     },
     {
         id: 31,
-        question: "Qual é o nome do planeta onde a maior parte da série 'Mass Effect' se passa?",
-        correct_answer: "Terra",
-        incorrect_answers: ["Omega", "Noveria", "Tuchanka"]
-    },
-    {
-        id: 32,
         question: "Qual é o nome do protagonista de 'Half-Life'?",
         correct_answer: "Gordon Freeman",
         incorrect_answers: ["Alyx Vance", "Barney Calhoun", "Eli Vance"]
     },
     {
-        id: 33,
+        id: 32,
         question: "Em qual jogo os jogadores exploram uma cidade pós-apocalíptica chamada Raccoon City?",
         correct_answer: "Resident Evil 2",
         incorrect_answers: ["Resident Evil 3", "Resident Evil 4", "Resident Evil 7"]
     },
     {
-        id: 34,
+        id: 33,
         question: "Qual é o nome do estúdio de desenvolvimento que criou 'The Elder Scrolls' e 'Fallout'?",
         correct_answer: "Bethesda Game Studios",
         incorrect_answers: ["BioWare", "Rockstar Games", "Naughty Dog"]
     },
     {
-        id: 35,
+        id: 34,
         question: "Em qual jogo você pode criar seu próprio personagem e explorar o mundo de Lordran?",
         correct_answer: "Dark Souls",
         incorrect_answers: ["Dark Souls II", "Dark Souls III", "Bloodborne"]
     },
     {
-        id: 36,
+        id: 35,
         question: "Qual é o nome do protagonista de 'The Witcher'?",
         correct_answer: "Geralt of Rivia",
         incorrect_answers: ["Ciri", "Triss Merigold", "Yennefer of Vengerberg"]
     },
     {
-        id: 37,
+        id: 36,
         question: "Em qual jogo os jogadores exploram uma cidade fictícia chamada Rapture?",
         correct_answer: "Bioshock",
         incorrect_answers: ["Bioshock 2", "Bioshock Infinite", "System Shock 2"]
     },
     {
-        id: 38,
+        id: 37,
         question: "Qual é o nome do cientista brilhante que é o protagonista da série 'Half-Life'?",
         correct_answer: "Gordon Freeman",
         incorrect_answers: ["Alyx Vance", "Barney Calhoun", "Eli Vance"]
     },
     {
-        id: 39,
+        id: 38,
         question: "Em qual jogo você pode viajar pelo espaço como um comandante da Normandy?",
         correct_answer: "Mass Effect",
         incorrect_answers: ["Mass Effect 2", "Mass Effect 3", "Mass Effect: Andromeda"]
     },
     {
-        id: 40,
+        id: 39,
         question: "Qual é o nome do jogo em que os jogadores exploram uma cidade subterrânea chamada City 17?",
         correct_answer: "Half-Life 2",
         incorrect_answers: ["Half-Life", "Half-Life: Alyx", "Half-Life: Episode One"]
     },
     {
-        id: 41,
+        id: 40,
         question: "Qual é o nome do protagonista de 'Red Dead Redemption'?",
         correct_answer: "John Marston",
         incorrect_answers: ["Arthur Morgan", "Dutch van der Linde", "Sadie Adler"]
     },
     {
-        id: 42,
+        id: 41,
         question: "Em qual jogo você pode jogar como um ex-membro de uma gangue chamado Arthur Morgan?",
         correct_answer: "Red Dead Redemption 2",
         incorrect_answers: ["Red Dead Redemption", "Grand Theft Auto V", "Bully"]

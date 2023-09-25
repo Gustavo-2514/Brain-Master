@@ -42,7 +42,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.containerMain .containerQuestions .response {
+.containerMain .containerQuestions .answer {
   background: #0f0c29;
   width: 450px;
   margin: 0.25rem;
@@ -51,7 +51,7 @@ body {
   cursor: pointer;
   transition: 0.8s;
 }
-.containerMain .containerQuestions .response:hover {
+.containerMain .containerQuestions .answer:hover {
   transform: scale(1.1);
   transition: 0.8s;
 }
