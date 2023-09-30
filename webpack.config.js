@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
   },
   mode:"production",
  
@@ -104,7 +104,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'public'),
     },
   },
 };
