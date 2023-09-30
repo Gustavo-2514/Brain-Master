@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#bodyGame {
+  background-color: #000000e3;
+  font-family: Poppins;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.containerMain {
+  width: 800px;
+  height: auto;
+  padding: 0;
+  color: white;
+
+  .headerContainerMain {
+    background-color: #97e2ce;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+
+    .divHeaderLogo {
+      display: flex;
+      align-items: center;
+      #headerLogo {
+        width: 80px;
+      }
+
+      #title {
+        font-family: lobster two;
+        font-size: 22px;
+        font-weight: 900;
+      }
+    }
+
+    .divTheme {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .thema {
+        margin: 0;
+      }
+    }
+  }
+
+  .containerQuestions {
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #24243e46;
+    border: 1px solid rgba(0, 0, 0, 0.486);
+    padding: 40px;
+
+    #answer {
+      background: black;
+      width: 450px;
+      margin: 0.25rem;
+      padding: 20px;
+      border-radius: 22px;
+      cursor: pointer;
+      transition: 0.8s;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.8s;
+      }
+
+      h2 {
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+
+    .nextBtn {
+      margin-top: 15px;
+      width: 450px;
+      padding: 20px;
+    }
+
+    button {
+      margin: 5px;
+    }
+  }
+
+  .footerContainerMain {
+    background: #97e2ce;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    .progress {
+      width: 150px;
+    }
+
+    .player {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  #bodyGame {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .containerMain {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    .headerContainerMain {
+      font-size: auto;
+      width: 100%;
+
+      #title {
+        font-size: auto;
+      }
+    }
+
+    .containerQuestions {
+      width: 100%;
+      #answer {
+        width: 80%;
+      }
+
+      .nextBtn {
+        width: 80%;
+      }
+    }
+
+    .footerContainerMain {
+      width: 100%;
+
+      .progress {
+        width: 150px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #section {
+    width: 100%;
+
+    .containerMain {
+      width: 100%;
+
+      .headerContainerMain {
+        height: 8vh;
+        width: 100%;
+      }
+
+      .containerQuestions {
+        height: 84vh;
+        min-width: 100%;
+        overflow: auto;
+        padding: 0;
+
+        .questionTitle {
+          margin-top: 30px;
+          width: 90%;
+        }
+
+        #answer {
+          width: 80%;
+          padding: 25px;
+        }
+
+        .nextBtn {
+          width: 80%;
+        }
+      }
+      .footerContainerMain {
+        height: 8vh;
+        min-width: 100%;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 405px) {
+  .containerMain {
+    .headerContainerMain {
+      .divHeaderLogo {
+        flex-direction: column;
+        #title {
+          display: none;
+        }
+      }
+    }
+    .footerContainerMain {
+      .progress {
+        width: 115px;
+      }
+    }
+    .player {
+      font-size: 17px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .containerMain {
+    .containerQuestions {
+      #answer {
+        padding: 15px;
+      }
+    }
+  }
+}

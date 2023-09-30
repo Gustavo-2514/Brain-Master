@@ -269,4 +269,94 @@ export const questionsSports = [
         correct_answer: "Boliche",
         incorrect_answers: ["Golfe", "Bocha", "Frisbee"]
     },
+    {
+        id: 46,
+        question: "Qual é o esporte que envolve a prática de golpes com os pés em uma bola e o objetivo é marcar gols?",
+        correct_answer: "Futebol",
+        incorrect_answers: ["Hóquei no Gelo", "Futebol Americano", "Rugby"]
+    },
+    {
+        id: 47,
+        question: "Qual é o nome do esporte em que você compete com uma bicicleta em uma pista repleta de obstáculos?",
+        correct_answer: "BMX",
+        incorrect_answers: ["Mountain Bike", "Ciclismo de Estrada", "Ciclismo de Pista"]
+    },
+    {
+        id: 48,
+        question: "Em que esporte você luta com um oponente no tatame e busca imobilizá-lo?",
+        correct_answer: "Judô",
+        incorrect_answers: ["Caratê", "Taekwondo", "Luta Livre"]
+    },
+    {
+        id: 49,
+        question: "Qual é o nome do esporte em que os competidores lançam um objeto pesado o mais longe possível?",
+        correct_answer: "Arremesso de Peso",
+        incorrect_answers: ["Lançamento de Martelo", "Lançamento de Dardo", "Decatlo"]
+    },
+    {
+        id: 50,
+        question: "Em que esporte você desce por uma pista de neve em esquis e passa por portões?",
+        correct_answer: "Esqui Alpino",
+        incorrect_answers: ["Esqui Cross-Country", "Snowboard", "Biatlo"]
+    },
+    {
+        id: 51,
+        question: "Qual é o nome do esporte em que você compete em uma piscina com obstáculos, como barreiras e poças de água?",
+        correct_answer: "Natação com Obstáculos",
+        incorrect_answers: ["Natação Sincronizada", "Saltos Ornamentais", "Pólo Aquático"]
+    },
+    {
+        id: 52,
+        question: "Em que esporte você compete em uma pista de corrida e salta com um bastão sobre uma barra horizontal?",
+        correct_answer: "Salto com Vara",
+        incorrect_answers: ["Salto em Altura", "Atletismo com Barreiras", "Decatlo"]
+    },
+    {
+        id: 53,
+        question: "Qual é o nome do esporte em que você usa um taco para bater na bola e tenta acertá-la em um buraco no gramado?",
+        correct_answer: "Golfe",
+        incorrect_answers: ["Beisebol", "Críquete", "Hóquei no Gelo"]
+    },
+    {
+        id: 54,
+        question: "Qual é o esporte em que você compete em uma bicicleta em uma pista oval e disputa corridas de velocidade?",
+        correct_answer: "Ciclismo de Pista",
+        incorrect_answers: ["Mountain Bike", "Ciclismo de Estrada", "BMX"]
+    },
+    {
+        id: 55,
+        question: "Em que esporte você corre com uma vara e tenta saltar sobre uma barra horizontal?",
+        correct_answer: "Salto com Vara",
+        incorrect_answers: ["Salto em Altura", "Atletismo com Barreiras", "Decatlo"]
+    },
+    {
+        id: 56,
+        question: "Qual é o nome do esporte em que você compete em uma quadra de grama e tenta acertar uma bola por cima da rede?",
+        correct_answer: "Tênis",
+        incorrect_answers: ["Badminton", "Pingue-pongue", "Squash"]
+    },
+    {
+        id: 57,
+        question: "Em que esporte você compete em um ringue e tenta derrubar seu oponente usando técnicas de luta?",
+        correct_answer: "Luta Livre",
+        incorrect_answers: ["Judô", "Caratê", "Boxe"]
+    },
+    {
+        id: 58,
+        question: "Qual é o nome do esporte em que você corre em uma pista de gelo e usa patins para marcar voltas?",
+        correct_answer: "Patinagem de Velocidade no Gelo",
+        incorrect_answers: ["Hóquei no Gelo", "Patinagem Artística", "Curling"]
+    },
+    {
+        id: 59,
+        question: "Em que esporte você compete em uma quadra retangular e tenta acertar a bola no campo adversário?",
+        correct_answer: "Vôlei",
+        incorrect_answers: ["Basquete", "Handebol", "Futebol"]
+    },
+    {
+        id: 60,
+        question: "Qual é o nome do esporte em que você desce por uma montanha coberta de neve em esquis?",
+        correct_answer: "Esqui Alpino",
+        incorrect_answers: ["Snowboard", "Esqui Cross-Country", "Biatlo"]
+    },
 ];

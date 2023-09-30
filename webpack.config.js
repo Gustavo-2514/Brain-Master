@@ -1,12 +1,13 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: {
-    index: "./src/js/index.js", 
+    index:"./src/js/index.js",
+    
+    game: "./src/js/game.js", 
   },
   output: {
     filename: "[name].bundle.js",
@@ -45,6 +46,13 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         use: [
           {
@@ -65,8 +73,9 @@ module.exports = {
   plugins: [
     
     new MiniCssExtractPlugin({
-      filename: "css/index.css"
+      filename: "css/index.css",
     }),
+   
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -88,10 +97,6 @@ module.exports = {
         {
           from: "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2",
           to: "css/fonts",
-        },
-        {
-          from: "node_modules/aos/dist/aos.css",
-          to: "css",
         },
       ],
     }),

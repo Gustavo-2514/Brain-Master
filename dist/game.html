@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imgs/brainPink.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script defer src="game.bundle.js"></script>
+    <title>Master Brain</title>
+  </head>
+  <body id="bodyGame">
+    <section id="section">
+      <div
+        class="container containerMain"
+        data-aos="flip-up"
+        data-aos-duration="1500"
+      >
+        <div class="container headerContainerMain">
+          <div
+            class="divHeaderLogo"
+            data-aos="fade-right"
+            data-aos-duration="2000"
+          >
+            <img id="headerLogo" src="imgs/brainPink.png" alt="" />
+            <span id="title">Master Brain</span>
+          </div>
+          <div class="divTheme">
+            <h5 class="thema" data-aos="fade-left" data-aos-duration="2000">
+              Tema: <span class="theme"></span>
+            </h5>
+          </div>
+        </div>
+        <div class="containerQuestions"></div>
+
+        <div class="container footerContainerMain">
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Success example"
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="progress-bar bg-success progressWidth"></div>
+          </div>
+          <i class="bi bi-person"><span class="playerName m-1"></span></i>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

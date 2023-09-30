@@ -1,5 +1,4 @@
-import { Question } from ".";
-
+import { Question } from "./game";
 
 export const questionsGame:Question[] = [
     {
